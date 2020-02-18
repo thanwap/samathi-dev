@@ -1,18 +1,49 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TeacherPlateComponent } from './teacher-plate/teacher-plate.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TeacherPlateFormComponent } from './teacher-plate/teacher-plate-form/teacher-plate-form.component';
+import { TeacherPlateItemComponent } from './teacher-plate/teacher-plate-item/teacher-plate-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ThaiDatePipe } from './directives/thaidate.pipe';
+
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TeacherPlateComponent,
+    TeacherPlateFormComponent,
+    TeacherPlateItemComponent,
+    ThaiDatePipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [ThaiDatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

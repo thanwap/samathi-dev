@@ -1,0 +1,53 @@
+<div class="teacher-plate-form-input">
+  <form [formGroup]="teacherForm">
+    <p>
+      <mat-form-field>
+        <mat-label>วันที่</mat-label>
+        <input matInput [matDatepicker]="pickerDate" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="pickerDate"></mat-datepicker-toggle>
+        <mat-datepicker #pickerDate></mat-datepicker>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>หัวข้อ</mat-label>
+        <mat-select formControlName="titleSelect">
+          <mat-option *ngFor="let chapter of chapters" [value]="chapter.value">
+            {{chapter.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>หัวข้อ</mat-label>
+        <input
+          matInput
+          placeholder="หัวข้อ"
+          type="text"
+          formControlName="title">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>ผู้บรรยาย</mat-label>
+        <mat-select formControlName="teacherNameSelect">
+          <mat-option *ngFor="let teacher of teachers" [value]="teacher.fullName">
+            {{teacher.fullName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>ผู้บรรยาย</mat-label>
+        <input
+          matInput
+          placeholder="ผู้บรรยาย"
+          type="text"
+          formControlName="teacherName">
+      </mat-form-field>
+    </p>
+    <input type='file' (change)="readURL($event);" />
+  </form>
+</div>
