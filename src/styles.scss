@@ -2,3 +2,30 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@font-face {
+  font-family: 'rsuregular';
+  src: url('assets/fonts/rsu_regular-webfont.woff2') format('woff2'),
+       url('assets/fonts/rsu_regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'rsulight';
+  src: url('assets/fonts/rsu_light-webfont.woff2') format('woff2'),
+       url('assets/fonts/rsu_light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'rsubold';
+  src: url('assets/fonts/rsu_bold-webfont.woff2') format('woff2'),
+       url('assets/fonts/rsu_bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}

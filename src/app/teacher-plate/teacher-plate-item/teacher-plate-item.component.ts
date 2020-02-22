@@ -11,8 +11,17 @@ import { TeacherPlate } from '../teacher-plate.model';
 })
 export class TeacherPlateItemComponent implements OnInit {
   plateInfo: TeacherPlate;
+  blockWidth: number = 0;
+  adjustPosition: number = 0;
+  currentPosition:number = 0;
+  currentTop: number = 0;
+  currentButtom:number = 0;
+  buttomPosition: number = 0;
+  isAdjusting: boolean = false;
 
-  @ViewChild('plateDummy', {static: false}) plate: ElementRef;
+
+  @ViewChild('plate', {static: false}) plate: ElementRef;
+  @ViewChild('plateDummy', {static: false}) plateDummy: ElementRef;
   @ViewChild('canvas', {static: false}) canvas: ElementRef;
   @ViewChild('downloadLink', {static: false}) downloadLink: ElementRef;
 
@@ -22,13 +31,44 @@ export class TeacherPlateItemComponent implements OnInit {
     this.plateInfo = this.teacherPlateService.getPlateInfo();
   }
 
+  showAdjustTool() {
+    let platePictureElement = this.plate.nativeElement.querySelectorAll('.plate-picture')[0];
+    let imageElement = this.plate.nativeElement.querySelectorAll('.plate-picture img')[0];
+    this.blockWidth = (platePictureElement.offsetWidth - imageElement.offsetWidth)/2;
+    this.adjustPosition = this.blockWidth - 5;
+    this.buttomPosition = 0;
+    this.isAdjusting = true;
+  }
+
+  finishAdjust() {
+    this.isAdjusting = false;
+  }
+
+  dragImageWidthBlock(e) {
+    this.blockWidth += e.distance.x - this.currentPosition;
+    this.currentPosition = e.distance.x;
+  }
+
+  dragImageWidthBlockClear(e) {
+    this.currentPosition = 0;
+  }
+
+  dragImageBottomBlock(e) {
+    this.buttomPosition += e.distance.y - this.currentButtom;
+    this.currentButtom = e.distance.y;
+  }
+
+  dragImageBottomBlockClear(e) {
+    this.currentButtom = 0;
+  }
+
   downloadImage() {
-    html2canvas(this.plate.nativeElement, {
+    html2canvas(this.plateDummy.nativeElement, {
       scrollY: 0,
+      scrollX: 0,
     }).then(canvas => {
       this.canvas.nativeElement.src = canvas.toDataURL();
       this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
-      // this.downloadLink.nativeElement.download = '14-ก.พ.-2020 1.2.3 การบริกรรม อ. เกสินี กังสนารักษ์.png';
       this.downloadLink.nativeElement.download =
         this.pipe.transform(this.plateInfo.date.toString(),'short')
         + ' ' + this.plateInfo.title + ' ' + this.plateInfo.teacherName + '.png';

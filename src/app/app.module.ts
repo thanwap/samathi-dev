@@ -17,6 +17,8 @@ import { TeacherPlateItemComponent } from './teacher-plate/teacher-plate-item/te
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ThaiDatePipe } from './directives/thaidate.pipe';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -41,7 +43,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     MatSelectModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    DragDropModule,
+    MatIconModule
   ],
   providers: [ThaiDatePipe],
   bootstrap: [AppComponent]
