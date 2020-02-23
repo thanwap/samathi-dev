@@ -16,17 +16,17 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1320px) {
   .teacher-plate-page {
     flex-wrap: wrap-reverse;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
     position: relative;
     margin-top: 50px;
 
     .plate-item {
       width: 100%;
-      max-width: 100%;
+      max-width: 543px;
     }
 
     .plate-form {

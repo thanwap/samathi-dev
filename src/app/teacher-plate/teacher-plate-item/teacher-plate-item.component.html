@@ -1,5 +1,5 @@
 
-<div #plate class="plate">
+<div #plate class="plate plate-main">
   <div class="plate-head"><img src="assets/img/plate/header.jpg" alt=""></div>
   <div class="plate-detail-wrap">
     <div class="plate-detail">
@@ -9,21 +9,9 @@
     </div>
   </div>
   <div class="plate-picture">
-    <div [style.width.px]="blockWidth" class="plate-block left"></div>
-    <div *ngIf="isAdjusting"
-      [style.left.px]="adjustPosition"
-      (cdkDragMoved)="dragImageWidthBlock($event)"
-      (cdkDragReleased)="dragImageWidthBlockClear($event)"
-      cdkDrag cdkDragLockAxis="x" class="plate-block-adjust"></div>
-    <div [style.width.px]="blockWidth" class="plate-block right"></div>
     <img [src]="plateInfo.image" alt="">
-    <div *ngIf="isAdjusting"
-      (cdkDragMoved)="dragImageBottomBlock($event)"
-      (cdkDragReleased)="dragImageBottomBlockClear($event)"
-      cdkDrag cdkDragLockAxis="y" class="plate-block-adjust-buttom">
-    </div>
   </div>
-  <div [style.marginTop.px]="buttomPosition" class="plate-footer-wrap">
+  <div class="plate-footer-wrap">
     <div class="plate-footer">
       <div>หนังสือครูสมาธิ เล่ม 1</div>
       <div>พระพรหมมงคลญาณ วิ. (หลวงพ่อวิริยังค์ สิรินฺธโร)</div>
@@ -41,11 +29,9 @@
     </div>
   </div>
   <div class="plate-picture">
-    <div [style.width.px]="blockWidth" class="plate-block left"></div>
-    <div [style.width.px]="blockWidth" class="plate-block right"></div>
     <img [src]="plateInfo.image" alt="">
   </div>
-  <div [style.marginTop.px]="buttomPosition" class="plate-footer-wrap">
+  <div class="plate-footer-wrap">
     <div class="plate-footer">
       <div>หนังสือครูสมาธิ เล่ม 1</div>
       <div>พระพรหมมงคลญาณ วิ. (หลวงพ่อวิริยังค์ สิรินฺธโร)</div>
@@ -55,12 +41,6 @@
 
 <div class="plate-button">
   <div class="plate-download">
-    <button *ngIf="isAdjusting" (click)="finishAdjust()" mat-mini-fab aria-label="finish">
-      <mat-icon>check</mat-icon>
-    </button>
-    <button (click)="showAdjustTool()" mat-raised-button color="primary">
-      Adjust
-    </button>
     <button (click)="downloadImage()" mat-raised-button color="primary">Download</button>
     <img class="canvas" #canvas>
     <a #downloadLink></a>

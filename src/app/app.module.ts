@@ -6,7 +6,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,7 +45,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     MatDatepickerModule,
     MatNativeDateModule,
     DragDropModule,
-    MatIconModule
+    MatIconModule,
+    ImageCropperModule
   ],
   providers: [ThaiDatePipe],
   bootstrap: [AppComponent]

@@ -48,6 +48,16 @@
           formControlName="teacherName">
       </mat-form-field>
     </p>
-    <input type='file' (change)="readURL($event);" />
+    <input type='file' (change)="fileChangeEvent($event);" />
+    <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 4"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()">
+    </image-cropper>
   </form>
 </div>

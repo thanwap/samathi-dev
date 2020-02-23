@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DateAdapter } from '@angular/material';
 import { Teacher } from '../teacher';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-teacher-plate-form',
@@ -12,8 +13,8 @@ import { Teacher } from '../teacher';
   styleUrls: ['./teacher-plate-form.component.scss']
 })
 export class TeacherPlateFormComponent implements OnInit {
-  imageSrc: any;
   chapters: any;
+  imageChangedEvent: any = '';
   teachers: Teacher[];
   teacherForm = new FormGroup({
     date: new FormControl(null),
@@ -72,6 +73,24 @@ export class TeacherPlateFormComponent implements OnInit {
 
       });
   }
+
+
+
+    fileChangeEvent(event: any): void {
+        this.imageChangedEvent = event;
+    }
+    imageCropped(event: ImageCroppedEvent) {
+        this.teacherPlateService.setImage(event.base64);
+    }
+    imageLoaded() {
+        // show cropper
+    }
+    cropperReady() {
+        // cropper ready
+    }
+    loadImageFailed() {
+        // show message
+    }
 
   readURL(fileInput: any): void {
     let fileData = <File>fileInput.target.files[0];
