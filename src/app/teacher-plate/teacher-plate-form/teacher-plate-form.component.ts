@@ -22,8 +22,10 @@ export class TeacherPlateFormComponent implements OnInit {
     title: new FormControl(''),
     teacherNameSelect: new FormControl(''),
     teacherName: new FormControl(''),
-    plateWidth: new FormControl(543)
+    plateWidth: new FormControl(),
+    bookNumber: new FormControl()
   });
+
   constructor(
     private teacherService: TeacherService,
     private chapterService: ChapterService,
@@ -45,7 +47,9 @@ export class TeacherPlateFormComponent implements OnInit {
     this.teacherForm.patchValue({
       date: plateInfo.date,
       title: plateInfo.title,
-      teacherName: plateInfo.teacherName
+      teacherName: plateInfo.teacherName,
+      plateWidth: plateInfo.plateWidth,
+      bookNumber: plateInfo.bookNumber
     });
 
     this.onChanges();
@@ -57,6 +61,7 @@ export class TeacherPlateFormComponent implements OnInit {
       this.teacherPlateService.setTile(val.title);
       this.teacherPlateService.setTeacherName(val.teacherName);
       this.teacherPlateService.setPlateWidth(val.plateWidth);
+      this.teacherPlateService.setBookNumber(val.bookNumber);
     });
 
     this.teacherForm
@@ -64,6 +69,15 @@ export class TeacherPlateFormComponent implements OnInit {
       .valueChanges
       .subscribe(val => {
         this.teacherForm.patchValue({ title: val });
+
+        if(val.length > 0){
+          let firstLetter = val[0];
+
+          if(Number(firstLetter)){
+            this.teacherPlateService.setBookNumber(+firstLetter);
+            this.teacherForm.patchValue({ bookNumber: firstLetter });
+          }
+        }
 
       });
 

@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, Output, EventEmitter } from '@angular/core';
 import { TeacherPlate } from './teacher-plate.model';
 
 @Injectable({
@@ -8,12 +8,14 @@ export class TeacherPlateService implements OnInit {
   private plateInfo: TeacherPlate;
   public readonly minPlateWidth: number = 400;
   public readonly defaultPlateWidth: number = 543;
+  public readonly defaultBookNumber: number = 1;
 
   constructor() {
     this.plateInfo = new TeacherPlate(
       '',
       '',
-      this.defaultPlateWidth
+      this.defaultPlateWidth,
+      this.defaultBookNumber
     );
   }
 
@@ -45,5 +47,9 @@ export class TeacherPlateService implements OnInit {
         this.plateInfo.plateWidth = width;
     else
     this.plateInfo.plateWidth = this.defaultPlateWidth;
+  }
+
+  setBookNumber(bookNumber: number): void {
+    this.plateInfo.bookNumber = bookNumber;
   }
 }

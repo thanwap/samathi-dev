@@ -58,6 +58,16 @@
           formControlName="plateWidth">
       </mat-form-field>
     </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>หนังสือครูสมาธิ เล่ม</mat-label>
+        <input
+          matInput
+          placeholder="เล่มที่"
+          type="number"
+          formControlName="bookNumber">
+      </mat-form-field>
+    </p>
     <input type='file' (change)="fileChangeEvent($event);" />
     <image-cropper
     [imageChangedEvent]="imageChangedEvent"
