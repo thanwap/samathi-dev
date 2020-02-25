@@ -1,4 +1,4 @@
-import { Teacher } from './teacher';
+import { Teacher } from './teacher.model';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 

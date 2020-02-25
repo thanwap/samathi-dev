@@ -1,5 +1,5 @@
 
-<div #plate class="plate plate-main">
+<div #plate [style.width.px]="plateInfo.plateWidth" class="plate plate-main">
   <div class="plate-head"><img src="assets/img/plate/header.jpg" alt=""></div>
   <div class="plate-detail-wrap">
     <div class="plate-detail">
@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<div #plateDummy class="plate plate-dummy">
+<div #plateDummy [style.width.px]="plateInfo.plateWidth" class="plate plate-dummy">
   <div class="plate-head"><img src="assets/img/plate/header.jpg" alt=""></div>
   <div class="plate-detail-wrap">
     <div class="plate-detail">

@@ -48,6 +48,16 @@
           formControlName="teacherName">
       </mat-form-field>
     </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>ขนาดกรอบ</mat-label>
+        <input
+          matInput
+          placeholder="ความกว้าง"
+          type="number"
+          formControlName="plateWidth">
+      </mat-form-field>
+    </p>
     <input type='file' (change)="fileChangeEvent($event);" />
     <image-cropper
     [imageChangedEvent]="imageChangedEvent"

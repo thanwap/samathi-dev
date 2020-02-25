@@ -4,7 +4,7 @@ import { TeacherPlateService } from './../teacher-plate.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DateAdapter } from '@angular/material';
-import { Teacher } from '../teacher';
+import { Teacher } from '../teacher.model';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 @Component({
@@ -21,7 +21,8 @@ export class TeacherPlateFormComponent implements OnInit {
     titleSelect: new FormControl(''),
     title: new FormControl(''),
     teacherNameSelect: new FormControl(''),
-    teacherName: new FormControl('')
+    teacherName: new FormControl(''),
+    plateWidth: new FormControl(543)
   });
   constructor(
     private teacherService: TeacherService,
@@ -55,6 +56,7 @@ export class TeacherPlateFormComponent implements OnInit {
       this.teacherPlateService.setDate(val.date);
       this.teacherPlateService.setTile(val.title);
       this.teacherPlateService.setTeacherName(val.teacherName);
+      this.teacherPlateService.setPlateWidth(val.plateWidth);
     });
 
     this.teacherForm
